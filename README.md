@@ -34,15 +34,59 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+1.Open Intel Quartus Prime and create a new Verilog HDL project.
+
+2.Create a new Verilog file and write the program for the JK Flip-Flop using if-else statements.
+
+3.Save the file with .v extension and compile the design to check for syntax errors.
+
+4.Create the required input signals (J, K, Clock, Reset) using the waveform editor or testbench.
+
+5.Run the simulation and observe the outputs Q and Q̅ (QB) for different input combinations.
+
+6.Verify the obtained outputs with the JK Flip-Flop functional/truth table.
+
+7.Record the simulation results and conclude that the JK Flip-Flop operation is verified successfully.
 
 **PROGRAM**
-
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+```
+module EXP7(q, qb,j,k,clock,reset);
+    input j,k,clock,reset;
+    output reg q, qb;
+always @ (posedge (clock))
+    begin 
+        if (!reset)
+            begin
+               q <= q;
+               qb <=qb;
+            end  
+else
+            begin
+               if (j == 0 && k == 0)
+                    begin
+                    q <= q;
+qb <= qb;
+                    end 
+else if (j != k)
+                    begin
+                    q <= j;
+                    qb <= k;
+                    end
+               else if (j == 1 && k == 1) 
+                    begin 
+                    q <= ~q; 
+                    qb <= ~qb; 
+                    end 
+            end
+end  
+endmodule
+```
 
 **RTL LOGIC FOR FLIPFLOPS**
-
+<img width="846" height="525" alt="image" src="https://github.com/user-attachments/assets/17e34e81-30ce-4ce1-a3df-42ce4d972b34" />
 **TIMING DIGRAMS FOR FLIP FLOPS**
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/ecbc6091-1aaf-449c-9891-18083ea8c595" />
+
 
 **RESULTS**
+Thus the JK flipflop is implemented and verified
